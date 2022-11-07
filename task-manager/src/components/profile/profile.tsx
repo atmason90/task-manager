@@ -2,8 +2,12 @@ import React, { FC, ReactElement } from 'react';
 import { Avatar, Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
+// TS interface
+interface IProfile {
+    name: string;
+}
 
-export const Profile: FC = (props: any): ReactElement => {
+export const Profile: FC<IProfile> = (props): ReactElement => {
     // Destructure Props
     const { name = 'John' } = props;
     return (
@@ -33,6 +37,8 @@ export const Profile: FC = (props: any): ReactElement => {
     )
 }
 
+// available in JS as well - interfaces only available in TS during development. 
+// good to use in conjunction with interfaces so that you reduce runtime errors
 Profile.propTypes = {
-    name: PropTypes.string
+    name: PropTypes.string.isRequired,
 };
