@@ -1,14 +1,11 @@
 import React, { FC, ReactElement } from 'react';
 import { Avatar, Box, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
 
 
-export const Profile: FC = (): ReactElement => {
-    {
-        // Name
-    }
-    {
-        // Welcome Message
-    }
+export const Profile: FC = (props: any): ReactElement => {
+    // Destructure Props
+    const { name = 'John' } = props;
     return (
         // container for profile
         <Box
@@ -26,13 +23,16 @@ export const Profile: FC = (): ReactElement => {
                     marginBottom: '16px',
                 }}
             >
-                <Typography variant='h4' color='text.primary'>J</Typography>
+                <Typography variant='h4' color='text.primary'>{`${name.substring(0,1)}`}</Typography>
             </Avatar>
             {/* Name using typography from mui */}
-            <Typography variant='h6' color='text.primary'>Welcome, John</Typography>
+            <Typography variant='h6' color='text.primary'>{`Welcome, ${name}`}</Typography>
             {/* Welcome Message using typography from mui */}
             <Typography variant='body1' color='text.primary'>This is your personal task manager</Typography>
         </Box>
     )
 }
 
+Profile.propTypes = {
+    name: PropTypes.string
+};
