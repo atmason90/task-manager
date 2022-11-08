@@ -1,6 +1,7 @@
 import React, { FC, ReactElement } from 'react'
 import { Box } from '@mui/material';
 import { TaskHeader } from './_taskHeader';
+import { TaskDescription } from './_taskDescription';
 
 export const Task: FC = (props): ReactElement => {
     return (
@@ -22,7 +23,9 @@ export const Task: FC = (props): ReactElement => {
             {/* task header */}
             <TaskHeader />
             {/* task description */}
+            <TaskDescription />
             {/* task footer */}
+            
         </Box>
     )
 }
