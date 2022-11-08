@@ -3,6 +3,8 @@ import { Avatar, Box, Typography } from '@mui/material';
 import { ITaskCounter } from './interfaces/ITaskCounter';
 import { Status } from '../createTaskForm/enums/status';
 import { emitCorrectBorderColors } from './helpers/emitCorrectBorderColor';
+import { emitCorrectLabel } from './helpers/emitCorrectLable';
+import PropTypes from 'prop-types';
 
 export const TaskCounter: FC<ITaskCounter> = (props): ReactElement => {
     // Destructure props
@@ -27,7 +29,7 @@ export const TaskCounter: FC<ITaskCounter> = (props): ReactElement => {
                     }}
                 >
                     <Typography color='#ffffff' variant='h4'>
-                        10
+                        {count}
                     </Typography>
                 </Avatar>
                 <Typography
@@ -36,7 +38,7 @@ export const TaskCounter: FC<ITaskCounter> = (props): ReactElement => {
                     fontSize='20px'
                     variant='h5'
                 >
-                    Subtitle
+                    {emitCorrectLabel(status)}
                 </Typography>
             </Box>
         </>
@@ -44,3 +46,11 @@ export const TaskCounter: FC<ITaskCounter> = (props): ReactElement => {
 }
 
 
+TaskCounter.propTypes = {
+    count: PropTypes.number,
+    status: PropTypes.oneOf([
+        Status.todo, 
+        Status.inProgress, 
+        Status.completed,
+    ]),
+};
