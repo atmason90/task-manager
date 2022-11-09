@@ -2,9 +2,14 @@ import { Task } from "./tasks.entity";
 import { AppDataSource } from "../../index";
 import { instanceToPlain } from 'class-transformer';
 
-export class TaskController {
-    constructor(private taskRepository = AppDataSource.getRepository(Task)) {}
+export class TasksController {
+    constructor(
+        private taskRepository = AppDataSource.getRepository(
+            Task,
+        ),
+    ) {};
     
+    // @ts-ignore
     public async getAll(): Promise<Task[]> {
         // Declare a variable to hold all tasks
         let allTasks: Task[];
