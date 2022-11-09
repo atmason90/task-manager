@@ -1,10 +1,18 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
 // Instantiate express app
 const app: Express = express();
 dotenv.config();
+
+// Parse the request body
+app.use(bodyParser.json());
+
+// Use cors install types
+app.use(cors());
 
 // Create Database Connection
 export const AppDataSource = new DataSource({
