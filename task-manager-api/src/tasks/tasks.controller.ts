@@ -1,5 +1,6 @@
 import { Task } from "./tasks.entity";
 import { AppDataSource } from "../../index";
+import { instanceToPlain } from 'class-transformer';
 
 export class TaskController {
     constructor(private taskRepository = AppDataSource.getRepository(Task)) {}
@@ -13,12 +14,13 @@ export class TaskController {
             allTasks = await this.taskRepository.find({
                 order: {
                     date: 'ASC',
-                }
+                },
             });
+            // Convert the tasks instance to an array of objects
+            allTasks = instanceToPlain(allTasks) as Task[];
+            return allTasks;
         } catch (errors){
             console.log(errors)
         }
-       
-        // Convert the tasks instance to an array of objects
     }
 }
