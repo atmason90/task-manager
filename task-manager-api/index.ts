@@ -1,13 +1,14 @@
-const express = require('express');
+import express, { Express, Request, Response } from 'express';
 
 // Instantiate express app
-const app = express();
+const app: Express = express();
 
 // Define server port
 const PORT = 3001;
 
+
 // Create default route
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
     res.send('Express + TypeSscript Server')
 });
 
