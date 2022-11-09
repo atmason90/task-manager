@@ -62,6 +62,8 @@ class TasksController {
         }
     }
 
+    // Method for put route
+    
 }
 
 export const taskController = new TasksController();
