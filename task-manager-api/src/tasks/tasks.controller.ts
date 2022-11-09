@@ -39,10 +39,27 @@ class TasksController {
         }
 
         // Create a new instance of a task
+        const newTask = new Task();
 
         // Add all the required properties of the task object
+        newTask.title = req.body.title;
+        newTask.date = req.body.date;
+        newTask.description = req.body.description;
+        newTask.priority = req.body.priority;
+        newTask.status = req.body.status;
 
         // save the newly created task to the database
+        let createdTask: Task;
+        try {
+            createdTask = await AppDataSource.getRepository(
+                Task,
+            ).save(newTask);
+            // convert the task instance to an object
+            createdTask = instanceToPlain(createdTask) as Task;
+            return res.json(createdTask).status(201);
+        } catch (errors) {
+            return res.json({error: 'Internal server error'}).status(500);
+        }
     }
 
 }
