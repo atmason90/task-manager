@@ -1,8 +1,8 @@
-import { body } from 'express-validator';
+import { body, ValidationChain } from 'express-validator';
 import { Priority } from '../enums/priority';
 import { Status } from '../enums/status';
 
-export const createValidator = [
+export const createValidator: ValidationChain[] = [
     body('title')
         .not()
         .isEmpty()
