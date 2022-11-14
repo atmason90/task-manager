@@ -2,15 +2,15 @@ type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 function returnCorrectRequest(
     method: Method,
-    data: unknown = {},
+    data: unknown,
 ): RequestInit {
     if(method === 'GET'){
         return {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
-            }
-        }
+            },
+        };
     }
     return {
         method: method,
