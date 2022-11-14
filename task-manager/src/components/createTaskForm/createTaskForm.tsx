@@ -29,36 +29,53 @@ export const CreateTaskForm: FC = (): ReactElement => {
             </Typography>
             <Stack sx={{ width: '100%'}} spacing={2}>
                 {/* Title of task */}
-                <TaskTitleField />
+                <TaskTitleField 
+                    onChange={(e) => setTitle(e.target.value)}
+                />
                 {/* Task Description */}
-                <TaskDescriptionField />
+                <TaskDescriptionField 
+                    onChange={(e) => setDescription(e.target.value)}
+                />
                 {/* Date */}
-                <TaskDateField />
+                <TaskDateField 
+                    value={date}
+                    onChange={(date) => setDate(date)}
+                />
                 <Stack direction='row' spacing={2}>
                     {/* Task Status & Priority */}
-                    <TaskSelectField label='Status' name='status' items={[
-                        {
-                            value: Status.todo,
-                            label: Status.todo,
-                        },
-                        {
-                            value: Status.inProgress,
-                            label: Status.inProgress,
-                        },
+                    <TaskSelectField 
+                        label='Status' 
+                        name='status'
+                        value={status}
+                        onChange={(e) => setStatus(e.target.value as string)}
+                        items={[
+                            {
+                                value: Status.todo,
+                                label: Status.todo,
+                            },
+                            {
+                                value: Status.inProgress,
+                                label: Status.inProgress,
+                            },
                     ]} />
-                    <TaskSelectField label='Priority' name='priority' items={[
-                        {
-                            value: Priority.low,
-                            label: Priority.low,
-                        },
-                        {
-                            value: Priority.normal,
-                            label: Priority.normal,
-                        },
-                        {
-                            value: Priority.high,
-                            label: Priority.high,
-                        },
+                    <TaskSelectField 
+                        label='Priority' 
+                        name='priority' 
+                        value={priority}
+                        onChange={(e) => setPriority(e.target.value as string)}
+                        items={[
+                            {
+                                value: Priority.low,
+                                label: Priority.low,
+                            },
+                            {
+                                value: Priority.normal,
+                                label: Priority.normal,
+                            },
+                            {
+                                value: Priority.high,
+                                label: Priority.high,
+                            },
                     ]} />
                 </Stack>
             </Stack>
