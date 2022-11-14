@@ -8,6 +8,7 @@ import { Status } from './enums/status';
 import { Priority } from './enums/priority';
 import { useMutation } from '@tanstack/react-query';
 import { sendApiRequest } from '../../helpers/sendApiRequest';
+import { ICreateTask } from '../taskarea/interfaces/ICreateTasks';
 
 export const CreateTaskForm: FC = (): ReactElement => {
     // Declare states
@@ -18,7 +19,7 @@ export const CreateTaskForm: FC = (): ReactElement => {
     const [priority, setPriority] = useState<string>(Priority.normal);
 
     // Create task mutation
-    const createTaskMutation = useMutation((data) =>
+    const createTaskMutation = useMutation((data: ICreateTask) =>
         sendApiRequest(
             'http://localhost:3000/tasks',
             'POST',
