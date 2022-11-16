@@ -64,15 +64,18 @@ export const CreateTaskForm: FC = (): ReactElement => {
                 {/* Title of task */}
                 <TaskTitleField 
                     onChange={(e) => setTitle(e.target.value)}
+                    disabled={createTaskMutation.isLoading}
                 />
                 {/* Task Description */}
                 <TaskDescriptionField 
                     onChange={(e) => setDescription(e.target.value)}
+                    disabled={createTaskMutation.isLoading}
                 />
                 {/* Date */}
                 <TaskDateField 
                     value={date}
                     onChange={(date) => setDate(date)}
+                    disabled={createTaskMutation.isLoading}
                 />
                 <Stack direction='row' spacing={2}>
                     {/* Task Status & Priority */}
@@ -80,6 +83,7 @@ export const CreateTaskForm: FC = (): ReactElement => {
                         label='Status' 
                         name='status'
                         value={status}
+                        disabled={createTaskMutation.isLoading}
                         onChange={(e) => setStatus(e.target.value as string)}
                         items={[
                             {
@@ -95,6 +99,7 @@ export const CreateTaskForm: FC = (): ReactElement => {
                         label='Priority' 
                         name='priority' 
                         value={priority}
+                        disabled={createTaskMutation.isLoading}
                         onChange={(e) => setPriority(e.target.value as string)}
                         items={[
                             {
@@ -112,8 +117,15 @@ export const CreateTaskForm: FC = (): ReactElement => {
                         ]} 
                     />
                 </Stack>
-                <LinearProgress />
+                {createTaskMutation.isLoading && <LinearProgress />}
                 <Button
+                    disabled={
+                        !title ||
+                        !description ||
+                        !date ||
+                        !status ||
+                        !priority
+                    }
                     onClick={createTaskHandler}
                     variant='contained'
                     size='large'
