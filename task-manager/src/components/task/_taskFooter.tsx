@@ -4,9 +4,9 @@ import {
     Button,
     FormControlLabel,
     Switch,
- } from '@mui/material';
- import { ITaskFooter } from './interfaces/ITaskFooter';
- import PropTypes from 'prop-types';
+} from '@mui/material';
+import { ITaskFooter } from './interfaces/ITaskFooter';
+import PropTypes from 'prop-types';
 import { Status } from '../createTaskForm/enums/status';
 
 
