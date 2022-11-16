@@ -29,7 +29,17 @@ export const Taskarea: FC = (): ReactElement => {
       'PUT',
       data
     )
-  )
+  );
+
+  function onStatusChangeHandler (
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: string,
+  ) {
+    updateTaskMutation.mutate({
+      id,
+      status: e.target.checked ? Status.inProgress : Status.todo,
+    })
+  }
 
   return (
     <Grid item md={8} px={4}>
@@ -94,6 +104,7 @@ export const Taskarea: FC = (): ReactElement => {
                       description={each.description}
                       priority={each.priority}
                       status={each.status}
+                      onStatusChange={onStatusChangeHandler}
                     />
                 ): (
                   false
