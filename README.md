@@ -24,7 +24,7 @@ To use this application:
 * In your terminal, navigate to the task-manager directory and run the ```npm start``` command
 * In your terminal, navigate to the task-manager-api directory and run the ```npm run dev``` command
 
-**This application utilizes MySQL for storing data**
+**NOTE: This application utilizes MySQL for storing data**
 
 ## Questions
 If you have questions about this project, please reach out to me via email at ![atmason90@gmail.com](mailto:atmason90@gmail.com). You can view more of my work on my ![GitHub Profile](https://github.com/atmason90)
