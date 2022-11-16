@@ -1,11 +1,12 @@
 import React, { FC, ReactElement } from 'react';
-import { Grid, Box } from '@mui/material';
+import { Grid, Box, Alert, LinearProgress } from '@mui/material';
 import { format } from 'date-fns';
 import { TaskCounter } from '../taskCounter/taskCounter';
 import { Task } from '../task/task';
 import { useQuery } from '@tanstack/react-query';
 import { sendApiRequest } from '../../helpers/sendApiRequest';
 import { ITaskApi } from './interfaces/ITaskApi';
+
 
 export const Taskarea: FC = (): ReactElement => {
 
@@ -54,9 +55,20 @@ export const Taskarea: FC = (): ReactElement => {
             xs={10}
             md={8}
           >
-            <Task />
-            <Task />
-            <Task />
+            {error && (
+            <Alert severity='error'>
+              There was an error fetching your tasks
+            </Alert>
+            )}
+            {!error && Array.isArray(data) && data.length === 0 && (    
+            <Alert severity='warning'>
+              You do not have any tasks create yet. Start by creating a task.
+            </Alert>
+            )}
+        
+            <Task id='123'/>
+            <Task id='123'/>
+            <Task id='123'/>
           </Grid>
       </Grid>
     </Grid>
