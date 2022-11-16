@@ -12,5 +12,5 @@ export interface ITaskFooter {
             | React.MouseEvent<HTMLButtonElement> 
             | React.MouseEvent<HTMLAnchorElement>,
             id: string,
-    ) => void
+    ) => void;
 };
