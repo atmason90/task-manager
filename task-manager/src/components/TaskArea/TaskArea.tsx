@@ -3,8 +3,22 @@ import { Grid, Box } from '@mui/material';
 import { format } from 'date-fns';
 import { TaskCounter } from '../taskCounter/taskCounter';
 import { Task } from '../task/task';
+import { useQuery } from '@tanstack/react-query';
+import { sendApiRequest } from '../../helpers/sendApiRequest';
+import { ITaskApi } from './interfaces/ITaskApi';
 
 export const Taskarea: FC = (): ReactElement => {
+
+  const { error, isLoading, data, refetch } = useQuery(
+    ['tasks'],
+    async () => {
+      return await sendApiRequest<ITaskApi[]>(
+        'http://localhost:3001/tasks',
+        'GET',
+      );
+    },
+  );
+
   return (
     <Grid item md={8} px={4}>
       <Box mb={8} px={4}>
