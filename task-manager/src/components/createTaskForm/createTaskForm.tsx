@@ -21,7 +21,7 @@ export const CreateTaskForm: FC = (): ReactElement => {
     // Create task mutation
     const createTaskMutation = useMutation((data: ICreateTask) =>
         sendApiRequest(
-            'http://localhost:3000/tasks',
+            'http://localhost:3001/tasks',
             'POST',
             data
         )
