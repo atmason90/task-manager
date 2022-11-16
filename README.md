@@ -27,7 +27,7 @@ To use this application:
 **NOTE: This application utilizes MySQL for storing data**
 
 ## Questions
-If you have questions about this project, please reach out to me via email at ![atmason90@gmail.com](mailto:atmason90@gmail.com). You can view more of my work on my ![GitHub Profile](https://github.com/atmason90)
+If you have questions about this project, please reach out to me via email at [atmason90@gmail.com](mailto:atmason90@gmail.com). You can view more of my work on my [GitHub Profile](https://github.com/atmason90)
 
 ## License
 MIT License
