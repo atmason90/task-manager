@@ -55,6 +55,7 @@ export const Taskarea: FC = (): ReactElement => {
             xs={10}
             md={8}
           >
+            <>
             {error && (
             <Alert severity='error'>
               There was an error fetching your tasks
@@ -65,10 +66,26 @@ export const Taskarea: FC = (): ReactElement => {
               You do not have any tasks create yet. Start by creating a task.
             </Alert>
             )}
-        
-            <Task id='123'/>
-            <Task id='123'/>
-            <Task id='123'/>
+            {isLoading ? (
+            <LinearProgress />
+            ) : (
+              Array.isArray(data) &&
+              data.length > 0 &&
+              data.map((each, index) => {
+                return (
+                <Task 
+                  key={index + each.priority}
+                  id={each.id}
+                  title={each.title}
+                  date={new Date(each.date)}
+                  description={each.description}
+                  priority={each.priority}
+                  status={each.status}
+                />
+                );
+              })
+            )}
+            </>
           </Grid>
       </Grid>
     </Grid>
